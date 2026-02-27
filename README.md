@@ -1,7 +1,6 @@
-# ForeEndWeb-Dome
-**Web front-end Dome case⚓**
+# Web-Dome⚓
 ## 对个人前端学习做系统性的整理🎃
-**系统性的整理了NodeJS、Webpack、VueJS学习过程中的Dome，其他的比如Css布局、JavaScript等 我没有系统性的Dome所有没有记录**
+**系统性的整理了JavaScript、NodeJS、Webpack、Vue2JS、Vue3JS、ES9、SCSS学习过程中的Dome**
   
 **其中NodeJS包含：这个文件很乱☠**
   - 模块化 --> 内置模块(fs,http,path……) <-> 第三方模块(vue,express……) <-> 自定义模块
@@ -46,5 +45,6 @@
   - 组件自定义事件、全局事件总线、PubSub消息发布订阅 解决 子组件传父组件、父组件传子子组件、兄弟组件间等的数据传输🚨
   - 代理服务器
   - 默认插槽 - 具名插槽 -作用域插槽
-  
+
+  .............
   
