@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>string类型</title>
+        <script type="text/javascript">
+
+            //非字符串类型加法算术运算(都转换为number类型计算)
+            //1.number类型运算
+            var a = 1 + 1;
+            console.log("1.number类型运算："+a)
+            //2.number类型和ture计算
+            var b = 1 + true;
+            console.log("2.number类型和ture计算："+b)
+            //3.number类型和false计算
+            var c = 1 + false;
+            console.log("3.number类型和false计算："+c)
+            //4.true和false计算
+            var d = true + false;
+            console.log("4.true和false计算："+d)
+            //5.true和null计算
+            var e = true + null;
+            console.log("5.true和null计算："+e)
+            //6.null和number计算
+            var f = null + 1;
+            console.log("6.null和number计算："+f)
+            //7.undefined和nmber计算
+            var g = undefined + 1;
+            console.log("7.undefined和nmber计算："+g)
+
+            //字符串类型加法算术计算(都转换为String类型拼接)
+            //字符串开头且只要两个值计算
+            var h = "a" + 1;
+            console.log("8.string和number计算："+h)
+            var i = "a" + true;
+            console.log("9.string和true计算："+i)
+            var j = "a" + undefined;
+            console.log("10.string和undefined计算："+j)
+            var k = "a" + null;
+            console.log("11.string和null计算："+k)
+            //number开头且超两个值计算
+            var l = 1 + 2 + "a";
+            console.log("12.："+l)
+            var n = 1 + undefined + "a";
+            console.log("13.："+n)
+
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>
+
+
+

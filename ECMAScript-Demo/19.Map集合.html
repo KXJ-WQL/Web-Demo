@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Map集合</title>
+        
+        <script type="text/javascript">
+            // 创建空的Map
+            const map1 = new Map() 
+
+            // 传入二维数组初始化Map
+            const map2 = new Map([["name","空想家"], ["age",25]])
+            console.log(map2)
+
+            //Map方法的使用
+            const map3 = new Map([["name","空想家"], ["age",23]])
+            map3.set('city', 'shijiazhuan') 
+            console.log(map3.get("name")) //输出：空想家
+            console.log(map3.delete("name"))//输出：true
+            console.log(map3.has("name"))//输出：false
+            console.log(map3.size)//输出：2
+            console.log(map3)//输出：{'age' => 23, 'city' => 'shijiazhuan'}
+
+            // 遍历
+            const map = new Map([
+               ['name', 'Alice'],
+               ['age', 25],
+               ['city', 'New York']
+            ]);
+
+            // 1.forEach方法遍历
+            map.forEach((key,value)=>{
+                console.log(`forEach方法遍历-${key}:${value}`)
+            })
+
+            // 2.for..of遍历
+            for(let [key,value] of map){
+                console.log(`for..of遍历-${key}:${value}`)
+            }
+            
+            // 遍历所有键
+            for(let key of map.keys()){
+                console.log(`keys遍历键-${key}`)
+            }
+
+            // 遍历所有值
+            for(let value of map.values()){
+                console.log(`values遍历值-${value}`)
+            }
+
+            // 遍历所有键值对
+            for(let [key,value] of map.entries()){
+                console.log(`entries遍历所有键值对-${key}:${value}`)
+            }
+
+        </script>
+    </head>
+</html>

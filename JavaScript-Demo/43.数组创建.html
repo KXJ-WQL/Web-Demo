@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js的toString方法</title>
+        <script type="text/javascript">
+            
+            // 构造函数创建
+            // 1.构造函数创建数组(无参)
+            var arr1 = new Array();
+            console.log(arr1)
+
+            // 2.构造函数创建数组(单参number类型)
+            var arr2 = new Array(4);
+            console.log(arr2)
+
+            // 3.构造函数创建数组(单参非number类型)
+            var arr3 = new Array("晴天");
+            console.log(arr3)
+
+            // 3.构造函数创建数组(多参)
+            var arr4 = new Array(2,"空想家");
+            console.log(arr4)
+
+            // 字面量创建数组
+            // 1.创建一个空数组
+            var arr5 = [] 
+            console.log(arr5)
+            
+            // 2.创建一个携带元素的数组
+            var arr6 = [1,2,3,"拉拉"]
+            console.log(arr6)
+
+            // 通过索引添加元素
+            arr5[0] = 23
+            // 通过索引读取元素
+            console.log(arr5[0])
+
+            // 数组存储函数
+            var s = [function(){console.log("函数1")}, function(){console.log("函数2")}]
+
+            // 在数组中调用函数
+            s[0]()
+
+
+        </script>
+    </head>
+    <body>
+    </body>
+
+</html>

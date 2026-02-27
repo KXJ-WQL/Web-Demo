@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>类型转换</title>
+        <script type="text/javascript">
+            var a = 100;
+            var c = true;
+            var e = null;
+            var f = undefined;
+
+            //方式一：使用String()函数
+            //1.number类型转化
+            var h = String(a)
+            console.log("number类型转换的值(toString())：" + h)
+            console.log("number类型转换(toString())：" + typeof h)
+
+            //2.boolean转化为String
+            var i = String(c);
+            console.log("boolean类型转换的值(toString())：" + i);
+            console.log("boolean类型转换(toString())：" + typeof i);
+
+            //3.null转化为String(使用String()函数可以正常转化，该函数直接将字符串输出)
+            console.log("null类型String()：" + String(e));
+            console.log("undefined类型String()：" + String(f));
+
+
+            //方式二：使用.tostring()方法
+            //1.number转换为String
+            var b = a.toString();
+            console.log("number类型转换的值：" + b)
+            console.log("number类型转换：" + typeof b)
+            
+            //2.boolean转化为String
+            var d = c.toString();
+            console.log("boolean类型转换的值：" + d);
+            console.log("boolean类型转换：" + typeof d);
+            
+            //3.null转化为String(使用toString()方法会报错，因为null和undefined没有toString方法)
+            console.log("null类型toString()：" + e.toString());
+            console.log("undefined类型toString()：" +  f.toString());
+        </script>
+    </head>
+
+    <body>
+    </body>
+</html>

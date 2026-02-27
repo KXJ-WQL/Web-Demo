@@ -1,0 +1,15 @@
+body1 {
+  background-image: linear-gradient(to right, blue, green);
+}
+
+body2 {
+  background-image: linear-gradient(to right, blue, blue);
+}
+
+body3 {
+  background-image: linear-gradient(to right, red, blue);
+}
+
+body4 {
+  background-image: linear-gradient(to right, blue, red);
+}/*# sourceMappingURL=function_paramse.css.map */

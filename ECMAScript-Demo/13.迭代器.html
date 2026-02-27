@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>迭代器</title>
+        
+        <script type="text/javascript">
+            // 1.简单示例
+            const arr = [1, 2, 3]
+            const iterator1 = arr[Symbol.iterator]();
+            console.log(iterator1.next()) // {value: 1, done: false}
+            console.log(iterator1.next()) // {value: 2, done: false}
+            console.log(iterator1.next()) // {value: 3, done: false}
+            console.log(iterator1.next()) // {value: undefined, done: true}
+
+            // 2.可迭代对象
+            const set = new Set([1, 2, 3])
+            // 1.使用for...of遍历
+            for(let value of set){
+                console.log(value) //输出：1 2 3
+            }
+            // 2.迭代器对象
+            const iterator2 = set[Symbol.iterator]();
+            console.log(iterator2.next()) // {value: 1, done: false}
+            console.log(iterator2.next()) // {value: 2, done: false}
+            console.log(iterator2.next()) // {value: 3, done: false}
+            console.log(iterator2.next()) // {value: undefined, done: true}
+
+            // 3.生成器迭代器
+            function * gengerator(){
+                yield 1;
+                yield 2;
+                yield 3;
+            }
+
+            const gen = gengerator()
+
+            console.log(gen.next()) // {value: 1, done: false}
+            console.log(gen.next()) // {value: 2, done: false}
+            console.log(gen.next()) // {value: 3, done: false}
+            console.log(gen.next()) // {value: undefined, done: true}
+
+            // 4.自定义可迭代对象
+            const myIterable = {
+                data: [10, 20, 30],
+                [Symbol.iterator]: function(){
+                    let index = 0
+                    const data = this.data
+                    return {
+                        next: function(){
+                            if(index < data.length){
+                                return { value: data[index++], done: false}
+                            }else{
+                                return {value: undefined, done: true}
+                            }
+                        }
+                    }
+                }
+            }
+
+            for(let value of myIterable){
+                console.log(value) // 输出：10 20 30
+            }
+            const iterator3 = myIterable[Symbol.iterator]();
+            console.log(iterator3.next()) // {value: 10, done: false}
+            console.log(iterator3.next()) // {value: 20, done: false}
+            console.log(iterator3.next()) // {value: 30, done: false}
+            console.log(iterator3.next()) // {value: undefined, done: true}
+
+            
+
+        </script>
+    </head>
+</html>

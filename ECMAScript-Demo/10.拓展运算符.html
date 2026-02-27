@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>拓展运算符</title>
+        
+        <script type="text/javascript">
+ //------------------------------------数组拓展运算符------------------------------------------------
+
+            //1.展开数组元素
+            const a = [1,2,3,4,5]
+            console.log(...a) // 输出：1 2 3 4 5
+
+            //2.合并数组
+            const arr1 = [10,22]
+            const arr2 = [33,44]
+            const merged = [...arr1, ...arr2]
+            console.log(merged) // 输出：[10,22,33,44]
+
+            //3.复制数组(浅拷贝)
+            const original = [1,2,3]
+            const copy = [...original]
+            console.log(copy) //输出：[1,2,3]
+            console.log(copy == original) //输出：false(引用不同)
+
+            //4.添加元素
+            const arr5 = [2, 4]
+            const extended = [1, ...arr5, 4]
+            console.log(extended) //输出：[1,2,4,4]
+
+            //5.将字符串转化为数组
+            const str = "hello"
+            const chars = [...str]
+            console.log(chars) //输出：['h', 'e', 'l', 'l', 'o']
+
+//------------------------------------对象拓展运算符------------------------------------------------
+            //1.浅拷贝对象
+            const obj = {a:1, b:2}
+            const copyObj = {...obj}
+            console.log(copyObj); // 输出: { a: 1, b: 2 }
+            console.log(copyObj === obj); // 输出: false (引用不同)
+
+            //2.合并对象
+            const obj1 = {a:1, b:2}
+            const obj2 = {b:10, c:20} // 同属性名后面会覆盖前面
+            const mergedobj = {...obj1, ...obj2}
+            console.log(mergedobj)// 输出: { a: 1, b: 10, c: 20 }
+
+            //3.添加或修改属性
+            const obj3 = {a:1, b:2}
+            const updated = {...obj3, b:300, c:199}
+            console.log(updated) //输出：{a: 1, b: 300, c: 199}
+
+//------------------------------------函数拓展运算符------------------------------------------------
+            function sum(x, y, z){
+                return x + y + z
+            }
+            const numbers = [1,2,3]
+            console.log(sum(...numbers)) //输出：6
+
+        </script>
+    </head>
+</html>

@@ -1,0 +1,30 @@
+$theme:10;
+
+.container{
+
+    @if $theme >= 5{
+        font-size: 5px;
+    }
+
+    @else{
+        font-size: 1px;
+    }
+
+    @if $theme <= 5{
+        color: red;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

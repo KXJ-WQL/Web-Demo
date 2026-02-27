@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>rest参数</title>
+        
+        <script type="text/javascript">
+
+            // 1.rest可变数量参数基本使用
+            function sum(...numbers) {
+                return numbers.reduce((total, num) => total + num, 0);
+            }
+
+            console.log(sum(1, 2, 3, 4)); // 输出: 10
+            console.log(sum(5, 10));      // 输出: 15
+            console.log(sum());           // 输出: 0
+
+            // 2.当参数列表中有多个形参，rest参数必须放在列表最末端
+            // function red(...numbers, num ) {
+            //     // 输出报错：Uncaught SyntaxError: Rest parameter must be last formal parameter
+            // }
+
+            // 3.对象解构赋值使用rest可变数量参数
+
+            function extractProperties(obj) {
+                const { name, ...rest } = obj;
+                console.log(name); // 打印 name 属性
+                console.log(rest); // 打印剩余的属性
+            }
+
+            extractProperties({ name: "Alice", age: 25, city: "Paris" });
+
+            
+        </script>
+    </head>
+</html>

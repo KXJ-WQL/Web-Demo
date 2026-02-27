@@ -1,0 +1,17 @@
+@for $i from 1 through 3 {
+    .wql-#{$i} {
+        width: 10px * $i;
+        height: 30px;
+        background-color: red;
+    }
+}
+
+
+
+
+
+
+
+
+
+

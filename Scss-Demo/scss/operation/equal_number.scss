@@ -1,0 +1,40 @@
+$theme: 1;
+
+.container{
+    @if $theme==1{
+        background-color: aqua;
+    }
+
+    @else{
+        background-color: blue;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

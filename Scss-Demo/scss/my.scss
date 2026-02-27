@@ -1,0 +1,23 @@
+html{
+    font-size: 12px;
+    color: antiquewhite;
+}
+
+.container{
+    font-size: 14px;
+    .header{
+        width: 50%;
+        height: 50%;
+        .left{
+            float: left;
+        }
+    }
+
+    .footer{
+        background-color: blueviolet;
+    }
+
+    &::after{
+        display: inline-block;
+    }
+}

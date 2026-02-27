@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js的toString方法</title>
+        <script type="text/javascript">
+         
+         // 创建构造函数
+         function Person(name, age, address){
+            this.name = name;
+            this.age = age;
+            this.address = address;
+         }
+
+         // 创建一个对象，在对象中添加toString()方法
+         var person1 = new Person("空想家", 18, "巨神峰")
+         console.log("无toString()方法打印输出结果：" + person1)
+         person1.toString = function(){
+            return "对象--姓名："+ this.name +"年龄："+ this.age +"地址："+ this.address 
+         } 
+         console.log("打印对象携带的toString()方法：" + person1)
+
+         //创建一个对象，在原型对象中添加toString()方法
+         var person2 = new Person("晴天", 20, "黑色玫瑰")
+         person2.__proto__.toString = function(){
+            return "原型对象--姓名："+ this.name +"年龄："+ this.age +"地址："+ this.address 
+         } 
+         console.log("打印原型对象携带的toString()方法：" + person2)
+        </script>
+    </head>
+    <body>
+    </body>
+
+</html>

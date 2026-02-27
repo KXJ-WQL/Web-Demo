@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>javascript函数</title>
+        <script type="text/javascript">
+            
+           //构造函数
+           var fun = new Function("console.log('1.构造函数')")
+           fun()//调用 
+           
+           //声明函数
+           function fun2(){
+            var mes = "2.声明式函数"
+            console.log(mes)
+           }
+           fun2()//调用
+
+           //函数表达式
+           var fun3 = function(){
+            console.log("3.函数表达式")
+           } 
+           fun3()//调用
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

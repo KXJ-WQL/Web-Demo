@@ -1,0 +1,9 @@
+@use './bootstrap';
+
+.test{
+    font-size: bootstrap.$c-font-size;
+    @include bootstrap.c-bgColor();
+    margin-top: bootstrap.$g-font-size;
+}
+
+

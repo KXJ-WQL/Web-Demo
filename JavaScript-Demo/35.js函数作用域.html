@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>全局作用域</title>
+        <script type="text/javascript">
+           
+           //1.全局作用域和局部作用域冲突问题 -- 局部作用域优先
+           var a = 100;
+           function fun1(){
+            var a = 50
+            console.log("1.优先局部作用域："+a)
+           } 
+           fun1()
+
+           //2.函数嵌套向上寻找
+           function fun2(){
+            var a = 20 
+            function fun3(){
+                console.log("2.嵌套子函数："+a)
+                }
+            fun3()
+           }
+           fun2()
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

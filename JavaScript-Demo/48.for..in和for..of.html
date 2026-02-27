@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js的Date对象</title>
+        <script type="text/javascript">
+          
+          // 1.for..in遍历
+          const obj = {a:1, b:2, c:3}
+          for(let key in obj){
+            console.log(key) // 输出: "a","b","c"
+            console.log(obj[key]) // 输出: 1, 2, 3
+          }
+
+          const arr =[10, 20, 30]
+          for(let index in arr){
+            console.log(index) // 输出: 0,1,2
+            console.log(arr[index]) // 输出: 10, 20, 30
+          }
+
+         // 2.for..of遍历
+         const arr1 = [10, 20, 30]
+         for(let value of arr1){
+            console.log(value) // 输出：10, 20, 30
+         }
+
+         const str = "Hello"
+         for(let char of str){
+            console.log(char) // 输出：'H' 'e' 'l' 'l' 'o'
+         }
+
+         const obj2 =  {a:1, b:2, c:3}
+         for(let ob of obj2){
+            console.log(ob) // 报错：Uncaught TypeError: objs is not iterable
+         }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js的Date对象</title>
+        <script type="text/javascript">
+          
+          // str类型包装类方法
+          const str = " Hello, World! ";
+          console.log(str.trim()); // "Hello, World!"
+          console.log(str.toUpperCase()); // " HELLO, WORLD! "
+          console.log(str.includes("World")); // true
+          console.log(str.replace("World", "JavaScript")); // " Hello, JavaScript! "
+          console.log(str.split(", ")); // [" Hello", "World!"]
+
+          // number类型的包装类
+          const num = 123.456;
+          console.log(num.toFixed(2)); // "123.46"
+          console.log(num.toPrecision(5)); // "123.46"
+          console.log(num.toString(16)); // "7b" (将数字转换为16进制字符串)
+          console.log(Number.isNaN(NaN)); // true
+          console.log(Number.isInteger(123.456)); // false
+          
+          // boolean类型的包装类
+          const bool = true;
+          console.log(bool.toString()); // "true"
+          console.log(bool.valueOf()); // true
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

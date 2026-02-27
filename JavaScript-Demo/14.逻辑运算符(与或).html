@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>逻辑运算符</title>
+        <script type="text/javascript">
+            
+            var a= true && false;
+            var b= false || true;
+            var c= true || alert("是否判断第二个值");
+            var d= true && alert("是否判断第二个值");
+
+            console.log("true && false： "+a)
+            console.log("false || true： "+b)
+            console.log('true || alert("是否判断第二个值")：'+c)
+            console.log('true && alert("是否判断第二个值")：'+d)
+
+
+            var a = "a" && "";//"a"转换为boolean为true ""为false 返回""
+            var b = 0 && 12 //0为false 12为true 返回0 
+            var c = NaN || 12 // NaN为false 12为true 返回12
+            var d = "sa" || null // "sa"为true null为false 返回sa
+            
+
+            console.log('"a" && ""：'+a)
+            console.log('0 && 12：'+b)
+            console.log('NaN || 12：'+c)
+            console.log('"sa" || null：'+d)
+
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

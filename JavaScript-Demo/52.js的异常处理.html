@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js的异常处理</title>
+        <script type="text/javascript">
+            // 基本语法
+            try{
+                // 可能后出错的代码
+                let result = ""
+                console.log(result)
+            }catch(error){
+                // 当出错时异常捕获执行的代码
+                console.error("发生错误: ", error.message)
+            }finally{
+                // 无论是否发生异常都会执行
+                console.log("执行完成！")
+            }
+
+            // throw关键字
+            function checkAge(age){
+                if(age < 18){
+                    throw new Error("未满18岁, 不允许访问!")
+                }
+                return "允许访问"
+            }
+
+            try{
+                console.log(checkAge(15)) 
+            }catch(error){
+                console.log("捕获到异常-", error.message)
+            }// 最终输出：捕获到异常- 未满18岁, 不允许访问!
+
+            // Error对象
+            try{
+                throw new Error("这是一个错误!")
+            }catch(error){
+                console.log("错误信息:", error.message)
+                console.log("错误名称:", error.name)
+                console.log("堆栈信息:", error.stack)
+            }
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+$istrue:false;
+
+.p{
+    background-color: if($istrue,red,green);
+}

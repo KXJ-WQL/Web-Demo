@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>函数参数默认值</title>
+        
+        <script type="text/javascript">
+
+            // 1.简单单参数默认值
+            function greet(name = "Guest"){
+                return `Hello, ${name}`
+            }
+
+            console.log(greet("Alice")) //输出：Hello, Alice
+            console.log(greet()) //输出：Hello, Guest
+
+
+            // 2.多参数默认值
+            function add(a = 0, b = 0 ){
+                return a + b;
+            }
+            console.log(add(5, 10)) //输出: 15
+            console.log(add(5)) //输出: 5(b使用默认值0)
+            console.log(add()) //输出: 0(a和b使用默认值0)
+
+
+            // 3.参数默认值只在未传递或传递undefined时生效，传递null或其他falsy值(如：false、0、NaN、"")不会使用默认值
+            function test(value = 42) {
+                return value;
+            }
+
+            console.log(test());       // 输出: 42 (使用默认值)
+            console.log(test(undefined)); // 输出: 42 (使用默认值)
+            console.log(test(null));   // 输出: null (默认值不生效)
+            console.log(test(0));      // 输出: 0 (默认值不生效)
+
+            
+        </script>
+    </head>
+</html>

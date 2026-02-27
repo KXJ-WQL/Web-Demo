@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>变量提升</title>
+        <script type="text/javascript">
+           
+            var globalVar = "I am a global variable";
+
+            function outerFunction() {
+                var outerVar = "I am an outer variable";
+
+                function innerFunction() {
+                    var innerVar = "I am an inner variable";
+                    console.log(globalVar); // 输出: I am a global variable
+                    console.log(outerVar); // 输出: I am an outer variable
+                    console.log(innerVar); // 输出: I am an inner variable
+                }
+
+                innerFunction();
+            }
+
+            outerFunction();
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

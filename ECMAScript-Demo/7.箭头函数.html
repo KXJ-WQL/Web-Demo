@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>箭头函数</title>
+        
+        <script type="text/javascript">
+            // 1.单个参数时可以省略括号
+            const square = x => x * x
+            console.log(square(4)) //输出: 16
+            
+            // 2.无参数,需要加空括号
+            const greet = () => "Hello!"
+            console.log(greet()) //输出: Hello!
+
+            // 3.多个参数时, 需要用括号包裹
+            const add = (a, b) => a + b
+            console.log(add(2 , 3)) //输出: 5
+
+            // 4.函数体只要一行代码且是返回值时，可以省略大括号和return
+            const multiply = (a, b) => a * b
+            console.log(multiply(3, 4)) //输出: 12
+            
+            // 5.如果函数体有多行，必须用大括号包裹，并显式使用return返回值
+            const substract = (a, b )=>{
+                const results = a - b
+                return results; 
+            }
+            console.log(substract(3, 4)) //输出: 12
+
+            
+            window.ss = "window静态对象"
+
+            // 普通函数
+            function getName1(){
+                console.log(this.ss)
+            }
+
+            // 箭头函数
+            const getName2 = () => {console.log(this.ss)}
+
+            // 普通对象
+            const persion = {
+                ss:"persion对象属性"
+            }
+
+            
+            getName1() // 普通调用- this指向window
+            getName2() // 普通调用- this始终指向声明函数的作用域，也就是全局window作用域
+            getName1.call(persion) // 指定普通函数的this指向persion
+            getName2.call(persion) // 指定箭头函数的this指向persion，但无效 
+
+            
+            
+        </script>
+    </head>
+</html>

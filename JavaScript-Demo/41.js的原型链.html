@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js原型链</title>
+        <script type="text/javascript">
+         
+            //定义构造函数
+            function Person(name){
+                this.name = name
+            }
+
+            //添加原型方法
+            Person.prototype.greet = function(){
+                console.log(`Hello, my name is ${this.name}.`);
+            }
+
+            //创建对象
+            let alice = new Person('Alice');
+            alice.greet();
+
+            //对象的__proto__是否等于函数的prototype
+            console.log("1.对象的__proto__是否等于函数的prototype：" + (alice.__proto__ == Person.prototype) )
+
+            //对象prototype的__proto__是否等于Object.prototype
+            console.log("2.对象prototype的__proto__是否等于Object.prototype：" + (Person.prototype.__proto__ == Object.prototype) )
+
+            //Object.prototype作为最基础的原型，它不存在原型
+            console.log("3.Object.prototype作为最基础的原型，它不存在原型：" + Object.prototype.__proto__ )
+
+
+
+        </script>
+    </head>
+    <body>
+    </body>
+
+</html>
+

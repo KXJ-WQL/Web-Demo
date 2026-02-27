@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>响应式原理</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //源数据
+            let person = {
+                name:'张三',
+                age:18
+            }
+
+            //模拟Vue2中实现响应式
+            // let p = {}
+            // Object.defineProperty(p,'name',{
+            //     configurable:true,
+            //     get(){//读取name时调用
+            //         console.log("有人读取了name值！")
+            //         return person.name
+            //     },
+            //     set(value){//修改name时调用
+            //         console.log("有人设置了name值！")
+            //         person.name = value
+            //     }
+            // })
+
+            //模拟Vue3中实现响应式
+            const p = new Proxy(person,{
+                //获取数据拦截操作
+                get(target,propName){
+                    console.log(`有人读取了p身上的${propName}属性`)
+                    return target[propName]
+                },
+
+                //设置数据拦截操作
+                set(target,propName,value){
+                    console.log(`有人修改了p身上的${propName}属性,需要去更新页面`)
+                    target[propName] = value
+                },
+
+                //删除数据拦截操作
+                deleteProperty(target,propName){
+                    console.log(`有人删除了p身上的${propName}属性,需要去更新页面`)
+                    return delete target[propName]
+                }
+            })
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

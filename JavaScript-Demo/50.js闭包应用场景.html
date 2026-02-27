@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js的闭包应用场景</title>
+        <script type="text/javascript">
+            // 应用场景一：计数器
+            function createCounter(){
+                let count = 0;
+                return function(){
+                    count++;
+                    return count;
+                }
+            }
+            const counter = createCounter();
+            console.log(counter()) // 输出：1
+            console.log(counter()) // 输出：2
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

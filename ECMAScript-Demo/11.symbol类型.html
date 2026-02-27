@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>symbol类型</title>
+        
+        <script type="text/javascript">
+//------------------------------------Symbol特点------------------------------------------------
+
+            // 1.每个Symbol都是唯一的，即使它们的描述相同
+            const symbol1 = Symbol("空想家")
+            const symbol2 = Symbol("空想家")
+            console.log(symbol1 === symbol2) //输出：false
+            
+            // 2.不能隐式转换为其他类型，必须显示转换
+            const sym = Symbol('desc')
+            console.log(String(sym)) // 输出：Symbol(desc)
+
+            // 3.可用于对象属性键
+            const syms = Symbol('key')
+            const obj = {
+                [syms]: "values"
+            }
+            console.log(obj[syms]) //输出：values
+
+//------------------------------------Symbol应用场景------------------------------------------------
+            //1.作为对象唯一属性键
+            const uniqueKey = Symbol('unique')
+            const objs = {
+                [uniqueKey]: 'This is a uniqueKey value'
+            }
+            console.log(obj[uniqueKey]) //输出：'This is a uniqueKey value'
+
+            //2.防止属性名冲突
+            const key1 = Symbol('key');
+            const key2 = Symbol('key');
+
+            const objw = {
+              [key1]: 'value1',
+              [key2]: 'value2'
+            };
+
+            console.log(objw[key1]); // 输出: value1
+            console.log(objw[key2]); // 输出: value2
+
+//------------------------------------Symbol的局限性------------------------------------------------
+            const sym1 = Symbol("foo")
+            const objsy = {[sym1]: 'bar',"daswq":"dwq"}
+            console.log(Object.keys(objsy)) //输出：[]
+            console.log(Object.getOwnPropertySymbols(objsy)) //输出：[Symbol(foo)]
+            
+        </script>
+    </head>
+</html>

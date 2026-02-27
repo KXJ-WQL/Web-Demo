@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>全局作用域</title>
+        <script type="text/javascript">
+           
+           //定义一个全局变量
+            var a = "枫"
+
+            //定义一个全局函数
+            function globalFun(){
+                console.log("函数内部获取全局变量："+a)
+            }
+
+            //使用window获取a变量的值(全局变量最终都绑定在window对象的属性中)
+            console.log(window.a)
+
+            //使用window调用全局globalFun函数(全局函数最终都绑定在window对象的方法中)
+            console.log(window.globalFun())
+
+            //全局变量a是否等于window.a
+            console.log("全局变量a是否等于window.a --> " + (a == window.a))
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

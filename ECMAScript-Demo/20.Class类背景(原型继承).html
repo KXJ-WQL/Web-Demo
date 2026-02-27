@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Class类</title>
+        
+        <script type="text/javascript">
+            
+            // 构造函数
+            function Animal(name){
+                this.name = name
+            }
+
+            Animal.prototype.speak = function(){
+                console.log(`${this.name} makes a sound`)
+            }
+
+            //子类
+            function Dog(name, breed){
+                Animal.call(this, name) //调用父类构造函数
+                this.breed = breed
+            }
+
+            //设置原型链
+            Dog.prototype = Object.create(Animal.prototype)
+            Dog.prototype.constructor = Dog
+            
+            Animal.prototype.bt = function(){
+                console.log(`${this.breed} barks`)
+            }
+
+            //创建实例对象
+            const dog = new Dog("REX","German Shephead")
+            dog.speak(); //输出：REX makes a sound
+            console.log(dog)
+
+            
+        </script>
+    </head>
+</html>

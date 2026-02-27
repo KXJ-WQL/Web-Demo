@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>this指向</title>
+        <script type="text/javascript">
+          
+          //1.全局作用域中的指向
+          console.log("1.全局作用域中的指向："+this); // 在浏览器中输出: window
+
+          //2.函数作用域的指向 -- 作为普通函数调用 
+          function fun(){
+            console.log("2.做为对象的方法调用"+this); // 在浏览器中输出: window
+          }
+
+          //3.函数作用域的指向 -- 做为对象的方法调用 --写法一
+          var obj = {
+            name:"啦啦啦",
+            method:function(){
+                console.log("3.做为对象的方法调用",this); // 在浏览器中输出: 指向当前对象
+            }
+          }
+          obj.method()
+
+          //4.函数作用域的指向 -- 做为对象的方法调用 --写法二
+          function fun2(){
+            console.log("4.做为对象的方法调用-写法二：",this)
+          }
+          var obj2 = {
+            name:"呜呜呜",
+            method:fun2
+          }
+
+          var obj3 = {
+            name:"哈哈哈",
+            method:fun2
+          }
+          obj2.method()
+          obj3.method()
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

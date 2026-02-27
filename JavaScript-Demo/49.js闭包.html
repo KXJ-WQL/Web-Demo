@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js的闭包</title>
+        <script type="text/javascript">
+            
+            // 1.简单的闭包声明使用
+            function createCounter(){
+                let count = 0; // 外部函数作用域的变量
+
+                // 定义并返回内部函数
+                return function(){
+                    count++; // 闭包：访问外部函数作用域的变量
+                    console.log(count)
+                }
+            }
+            // 调用外部函数，返回内部函数
+            const counter1 = createCounter();
+            // 运行内部函数
+            counter1(); // 输出：1
+            counter1(); // 输出：2
+            counter1(); // 输出：3
+
+            // 调用外部函数，返回内部函数
+            const counter2 = createCounter();
+            // 运行内部函数
+            counter2(); // 输出：1
+            counter2(); // 输出：2
+            counter2(); // 输出：3
+
+
+            // 2. 闭包保存状态
+            function saveState(){
+                let state = "Hello, Closure!"
+
+                return function(){
+                    console.log(state)
+                }
+            }
+
+            const printState = saveState()
+            printState() // 输出：Hello, Closure!
+
+            // 3.封装私有变量和方法
+            function createPerson(name){
+                let age = 25 //私有变量
+                return {
+                    // 定义get获取变量值方法
+                    getName: function(){
+                        return name; // 获取私有变量
+                    },
+                    getAge: function(){
+                        return age;
+                    },
+                    //定义set修改值的方法
+                    setAge: function(newAge){
+                        if(newAge > 0) age = newAge //修改私有变量
+                    }
+
+                }
+            }
+
+            const person = createPerson("空想家")
+            console.log(person.getName()) // 输出：空想家
+            console.log(person.getAge()) // 输出：25
+            person.setAge(30);
+            console.log(person.getAge()) // 输出：30
+
+            // 4.内存问题
+            function leakyFunction(){
+                let largeDate = new Array(100000).fill("data"); //占用大量内存
+
+                return function(){
+                    console.log("Closure still holds largeDate")
+                }
+            }
+            const leak = leakyFunction() // 即使不需要largeDate, 内存依然被占用，因为leak依然引用它
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

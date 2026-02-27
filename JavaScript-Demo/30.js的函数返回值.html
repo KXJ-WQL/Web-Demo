@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>javascript函数返回值</title>
+        <script type="text/javascript">
+            
+            //1.无return
+            function fun1(){
+                console.log("1.无return")
+            }
+            var a = fun1()
+            console.log("1.返回值：" + a)
+
+            //2.有return不携带值
+            function fun2(){
+                console.log("2.有return不携带值 - before")
+                return;
+                console.log("2.有return不携带值 - after")
+            }
+            var b = fun2()
+            console.log("2.返回值：" + b)
+
+            //3.返回基本类型
+            function fun3(){
+                console.log("3.返回基本类型")
+                return 100;
+            }
+            var c = fun3()
+            console.log("3.返回值：" + c)
+
+            //4.返回Object对象
+            function fun4(){
+                console.log("4.返回Object对象")
+                return {name:"空想家",age:120};
+            }
+            var d = fun4()
+            console.log("4.返回值：",d)
+          
+            //5.返回function函数
+            function fun5(){
+                console.log("5.返回function函数")
+                var sonfun = function(){
+                    return "sonfun函数嵌套"
+                }
+                return sonfun;
+            }
+            var e = fun5()()
+            console.log("5.返回值：" + e)
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

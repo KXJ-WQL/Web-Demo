@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>this指向</title>
+        <script type="text/javascript">
+          
+          function comm(){
+                console.log("对象的方法：name--"+this.name+"  age--"+this.age)
+            }
+
+          //1.定义构造函数
+          function Person(name,age){
+            this.name = name;
+            this.age =age;
+            this.method = comm
+          }
+
+          //2.创建对象实例
+          //创建对象1
+          var dui = new Person("空想家",100);
+          dui.method()
+
+          //创建对象2
+          var du = new Person("晴天",50);
+          du.method()
+
+
+          console.log("du",du)
+        </script>
+    </head>
+    <body>
+    </body>
+
+</html>

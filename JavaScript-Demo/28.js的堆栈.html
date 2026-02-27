@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>object堆栈</title>
+        <script type="text/javascript">
+          
+          //基本数据类型
+          var a = 1;
+          var b = 2;
+          var c = a;
+          
+          a += 2;
+          b +=a;
+
+          console.log("a值："+a);
+          console.log("b值："+b);
+          console.log("c值："+c);
+
+
+          //引用数据类型
+          var a1 = {name:"空想家",age:20};
+          var a2 = a1;
+
+          a1.message = "地址指向!"
+
+          console.log("a1值：",a1);
+          console.log("b1值：",a2);
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

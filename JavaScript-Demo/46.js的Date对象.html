@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js的Date对象</title>
+        <script type="text/javascript">
+            
+            // 1.当前时间创建Date对象
+            var date1 = new Date()
+            console.log("1.当前时间创建Date",date1)
+            
+            // 2.指定日期时间字符串创建Date
+            var date2 = new Date("2024-12-13T10:01:04Z")
+            console.log("2.指定日期时间字符串创建Date",date2)
+
+            // 3.指定日期时间参数创建Date
+            var date3 = new Date(2024,12,13,10,23,45)
+            console.log("3.指定日期时间参数创建Date",date3)
+
+            // 4.指定时间戳创建date
+            var date4 = new Date(17825668164)
+            console.log("4.指定时间戳创建date",date4)
+
+            const date = new Date(2024, 11, 13, 10, 23, 45); // 2024-12-13 10:23:45
+
+            // 输出本地格式
+            console.log(date.toLocaleString()); // 例如: "2024/12/13 10:23:45"
+
+            // 只显示日期部分
+            console.log(date.toLocaleDateString()); // 例如: "2024/12/13"
+
+            // 只显示时间部分
+            console.log(date.toLocaleTimeString()); // 例如: "10:23:45"
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+//定义全局变量
+$myfont_color: #ff9300 !default;
+
+//数字类型
+$layer-index:10;
+$border-width:10px;
+//字符串列表类型
+$font-base-family: "Open Sans",Helvetica,Sns-Serif;
+//颜色类型
+$top-bg-color:rgba(255,147,29,0.6);
+//数字列表类型
+$block-base-padding: 6px 10px 6px 10px;
+//布尔类型
+$blank-mode:true;
+//空值类型
+$var: null;
+//颜色的maps类型
+$color-map: (color1: #e8c89c,color2: #8d96bd,color3:#c5c489);
+//字符串的map类型
+$fonts:(serif:"Helvetica Neue",monospace:"Consolas");
+
+
+//值的获取
+.getvalue{
+    lighting-color: map-get($color-map,color1);
+    font-family: map-get($fonts, monospace );
+    font-size: nth($block-base-padding , 2 );
+    background-color: $top-bg-color;
+}
+
+.mytext{
+    //使用全局变量
+    color: $myfont_color;
+    //定义局部变量
+    $myfontsize:10px;
+    //使用局部变量
+    font-size: $myfontsize;
+}
+
+.mycontext{
+    //将局部变量转换为全局变量
+    $myborder-top: 19px !global;
+}
+
+.mysubcontext{
+    //使用转化后的全局变量
+    border-top: $myborder-top;
+}

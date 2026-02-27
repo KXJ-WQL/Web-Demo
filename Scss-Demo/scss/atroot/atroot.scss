@@ -1,0 +1,15 @@
+.nav {
+    ul {
+      list-style: none;
+  
+      @at-root .s{
+        padding: 10px;
+        margin: 10px;
+      }
+  
+      li {
+        display: inline-block;
+        margin-right: 10px;
+      }
+    }
+  }

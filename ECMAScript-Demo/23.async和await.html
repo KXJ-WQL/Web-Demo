@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>async和await</title>
+        
+        <script type="text/javascript">
+            
+            // 1.async的基本使用
+            async function example(){
+                return "Hello, Async!"
+            }
+
+            // 调用返回Promise对象
+            example().then((result) => console.log(result))
+
+            // 2.使用await等待返回结果
+            function fetchData(){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(() => resolve("Data loaded!"), 2000)
+
+                })
+            }
+
+            async function loadData(){
+                console.log("Fetching data...")
+                const data = await fetchData() //等待Promise完成
+                console.log(data) //输出：Data Loaded!
+            }
+
+            loadData()
+
+            // 错误处理
+            function fetchDataWithError(){
+                return new Promise((_, reject) => {
+                    setTimeout(() => reject("Error occurred"), 2000)
+                })
+            }
+
+            async function loadDataWithErrorHandling(){
+                try{
+                    console.log("Fetching error data...")
+                    const data = await fetchDataWithError();
+                    console.log(data)
+                }catch(error){
+                    console.log("Caught an error:", error) //输出Caught an error: Error occurred
+                }
+            }
+
+            loadDataWithErrorHandling()
+
+        </script>
+    </head>
+</html>

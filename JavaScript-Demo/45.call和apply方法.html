@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>call和apply方法</title>
+        <script type="text/javascript">
+
+            function greet(greeting,punctuation){
+                console.log("greeting："+greeting,"punctuation："+punctuation,"person："+this.name)
+            }
+
+            var person = { name: "Alice" }
+
+            // // call指定this为person
+            // greet.call(person, "welcome Home","in the park")
+
+            // apply指定this为person
+            greet.apply(person,["Welcome to my park", "."])
+
+        </script>
+    </head>
+    <body>
+    </body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>js的数组方法</title>
+        <script type="text/javascript">
+            
+            //创建一个数组
+            var arr = ["晴天","空想家"]
+            
+            //1.在数组末端添加一个元素
+            arr.push("WQL")
+            console.log("1.push末端添加元素: ",arr.toString()
+            )
+
+            //2.移除并返回数组末端的元素
+            var a = arr.pop()
+            console.log("2.pop移除并返回的元素: ", a)
+            console.log("2.pop移除后的数组: ", arr.toString())
+
+            //3.在数组头部添加元素
+            arr.unshift("FQ")
+            console.log("3.unshift在数组头部添加元素: ",arr.toString())
+
+            //4.移除并返回数组头部的元素
+            var b = arr.shift()
+            console.log("4.shift移除并返回的元素: ",b)
+            console.log("4.shift移除后的数组: ",arr.toString())
+
+            //1.splice插入元素
+            var arr1 = [1, 2, 3]
+            arr.splice(1, 0, 'a', 'b') // 从索引1开始，不删除元素，插入'a'和'b'元素
+            console.log("1.splice插入元素", arr1.toString())
+
+            // 2.splice替换元素
+            let arr2 = [1, 2, 3, 4]
+            arr2.splice(1,2,'c','d') // 从索引1开始，删除2个元素，并插入'a'和'b'
+            console.log("2.splice替换元素", arr2.toString())
+
+            // 3.splice使用负索引删除元素
+            let arr3 = [1,2,3,4]
+            arr3.splice(-2,2) //从倒数第二个元素开始删除 2 个元素
+            console.log("3.splice使用负索引删除元素", arr3.toString())
+
+            var arr4 = [1,2,3,4,3,6]
+            
+            // 1.查询元素首次出现位置的索引
+            console.log("1.查询元素首次出现位置的索引", arr4.indexOf(3)) //查询值为3的元素出现位置的索引
+            console.log("2.查询元素最后一次出现位置的索引", arr4.lastIndexOf(3)) //查询值为3的元素最后一次出现位置的索引
+            console.log("3.检查数组是否包含某个元素", arr4.includes(3)) //检查数组是否包括某个元素
+            console.log("4.返回第一个满足条件的元素", arr4.find(x => x>2)) //返回大于2第一个满足条件的元素
+            console.log("5.返回第一个满足条件的元素索引", arr4.findIndex(x => x>2)) //返回大于2第一个满足条件的元素
+
+            var arr4 = [1,2,3,4,3,6]
+            
+            arr4.sort() // 1.对数组元素进行排序
+            console.log(arr4)
+            
+            arr4.reverse() // 2.反转元素
+            console.log(arr4)
+
+            var arr5 = arr4.filter(x => x >= 4) //3.筛选出满足条件的元素，返回一个满足条件的数组
+            console.log(arr5)
+
+            var arr6 = arr4.map(x => x * 2) //4.map每个元素执行回调，每个元素*2
+            console.log(arr6)
+
+            var arr6 = [1,2,3,4,5]
+            var arr7 = [6,7,8]
+
+            console.log("1.合并元素:",arr6.concat(arr7).toString())
+            console.log("2.按下标提取元素:",arr6.slice(1,3).toString())
+            console.log("3.按照分隔符将数组转化为String字符串:",arr6.join("="))
+
+            var arr8 = [1,2,3,4,5]
+            var v1 = arr8.reduce((acc, curr) => acc + curr,0)
+            console.log(v1)
+            arr8.forEach(x=>console.log(x))
+
+
+            for(var a=0; a<arr8.length; a++){
+                console.log(arr8[a])
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+
+</html>

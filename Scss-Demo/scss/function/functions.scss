@@ -1,0 +1,7 @@
+@function enlarge-size ($size:0px){
+    @return $size* 10; 
+}
+
+.p{
+    font-size: enlarge-size(2px);
+}

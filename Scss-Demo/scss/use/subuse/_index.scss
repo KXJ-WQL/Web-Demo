@@ -1,0 +1,6 @@
+@use './common' as common;
+@use './global' as g2;
+$font-size: common.$font-size;
+@mixin bgColor($bg-color:#f2f2f2){
+    background-color: $bg-color;
+}

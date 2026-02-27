@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>生成器</title>
+        
+        <script type="text/javascript">
+
+            // 生成器简单声明
+            function* simplGenerator(){
+                console.log("开始执行")
+                yield 1; // 暂停，返回1
+                console.log("继续执行")
+                yield 2;
+                console.log("执行结束")
+                return 3; // 返回3，并结束生成器
+            }
+            // 返回一个生成器对象(内含迭代器)
+            const gen = simplGenerator()
+
+            console.log(gen.next())
+            console.log(gen.next())
+            console.log(gen.next())
+            console.log(gen.next())
+
+            // return()方法
+            function* generator(){
+                yield 1;
+                yield 2;
+            }
+            const gen2 = generator()
+            console.log(gen2.return(100)) //输出：{value: 100, done: true}
+            console.log(gen2.next()) //输出：{value: undefined, done: true}
+        
+            // throw()方法
+            function* generator3(){
+                try{
+                    yield 1;
+                    yield 2;
+                } catch(error){
+                    console.log("捕捉到错误：", error)
+                }
+            }
+            const gen4 = generator3()
+            console.log(gen4.next()) //输出：{value: 1, done: false}
+            gen.throw(new Error("出错了")) //输出：Uncaught Error: 出错了
+            console.log(gen4.next()) ///输出：{value: undefined, done: true}
+        
+        
+        
+        </script>
+    </head>
+</html>

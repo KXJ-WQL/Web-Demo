@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Promise静态方法</title>
+        
+        <script type="text/javascript">
+
+            // 1.Promise.resolve(value)
+            let p1 = Promise.resolve(400)
+            p1.then(value => console.log(value)) //输出：400
+            
+            // 2.Promise.reject(reason)
+            let p2 = Promise.reject(new Error("something went wrong"))
+            p2.catch(error => console.log(error.message)) //输出：something went wrong
+
+            // 3.Promise.all(iterable)
+            let p3 = Promise.resolve(3)
+            let p4 = Promise.resolve(4)
+            let p5 = Promise.resolve(5)
+
+            Promise.all([p3,p4,p5]).then(values => {
+                console.log(values) //输出：[3,4,5]
+            })
+
+            // 4.Promise.any(iterable)
+            let p6 = Promise.reject(new Error("Fail 6"))
+            let p7= Promise.resolve("Success")
+            let p8 = Promise.reject(new Error("Fail 8"))
+
+            Promise.any([p6,p7,p8]).then(value => {
+                console.log(value) //输出：Success
+            }).catch(error => {
+                console.log(error) //不会被执行
+            })
+
+            // 5.Peomise.allSettled(iterable)
+            let p9= Promise.resolve("Success")
+            let p10 = Promise.reject(new Error("Fail 10"))
+            Promise.allSettled([p9,p10]).then(results => {
+                results.forEach(result => console.log(result.status)) //输出：fulfilled  rejected
+            })
+
+
+        </script>
+    </head>
+</html>

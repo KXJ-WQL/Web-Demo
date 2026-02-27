@@ -1,0 +1,15 @@
+.getvalue {
+  lighting-color: #e8c89c;
+  font-family: "Consolas";
+  font-size: 10px;
+  background-color: rgba(255, 147, 29, 0.6);
+}
+
+.mytext {
+  color: #ff9300;
+  font-size: 10px;
+}
+
+.mysubcontext {
+  border-top: 19px;
+}/*# sourceMappingURL=my_variable_definition.css.map */

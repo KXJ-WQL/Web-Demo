@@ -1,0 +1,6 @@
+@use 'subuse';
+
+.wql{
+    font-size: subuse.$font-size;
+    @include subuse.bgColor(blue);
+}

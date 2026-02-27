@@ -1,0 +1,12 @@
+//定义混入
+@mixin comm-textstyle{
+    color: antiquewhite;
+    font-size: 10px;
+    background-color: aqua;
+    border-bottom: 2px;
+}
+
+.container{
+    //引入混入
+    @include comm-textstyle();
+}

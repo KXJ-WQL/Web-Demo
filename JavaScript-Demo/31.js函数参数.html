@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>javascript函数</title>
+        <script type="text/javascript">
+            
+          //1.传递基本类型 - 多传参数
+          function fun1(name,age,mes){
+            var str = "姓名："+name+"\n年龄："+age+"\n签名："+mes;
+            return str;
+          }
+          //调用时多传递参数 - 实参按顺序传递给形参，过多就舍弃调
+          var a = fun1("空想家",18,"掌控命运！");
+          console.log("1.结果：" + a)
+           
+          //2.传递基本类型 - 少传参数
+          function fun2(name,age,mes){
+            var str = "姓名："+name+"\n年龄："+age+"\n签名："+mes;
+            return str;
+          }
+          //调用时少传递参数 - 实参按顺序传递给形参，没有能赋值的为undefined
+          var b = fun2("晴天",20);
+          console.log("2.结果：" + b)
+
+           //3.传递Object对象
+            var person = {
+                name: "暗夜",
+                age: 1200,
+                mes: "诡秘之境！"
+            }
+
+           function fun3(obj){
+            var str = "姓名：" + obj.name + "\n年龄："+obj.age+"\n签名："+obj.mes;
+            return str;
+          }
+          //调用时少传递参数 - 实参按顺序传递给形参，没有能赋值的为undefined
+          var c = fun3(person);
+          console.log("3.结果：" + c)
+
+
+          //4.传递function函数对象
+          var onfun = function(){
+            return "姓名："+"函数传递"+"\n年龄："+120+"\n签名："+"demo练习";
+          }
+
+           function fun4(fun){
+            
+            return fun();
+          }
+          //调用时少传递参数 - 实参按顺序传递给形参，没有能赋值的为undefined
+          var d = fun4(onfun);
+          console.log("4.结果：" + d)
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

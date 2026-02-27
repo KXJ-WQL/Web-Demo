@@ -1,0 +1,15 @@
+@mixin block_padding($top, $right, $bottom, $left){
+    padding-top: $top;
+    padding-right: $right;
+    padding-bottom: $bottom;
+    padding-left: $left;
+}
+
+.container{
+    @include block_padding(10px,10px , 10px, 10px)
+
+}
+
+
+
+

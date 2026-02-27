@@ -1,0 +1,13 @@
+$theme: "wql-kxj";
+
+.container{
+
+    @if $theme=="wql-kxj"{
+        margin-top: 10px;
+    }
+
+    @else{
+        padding-top: 10px;
+
+    }
+}

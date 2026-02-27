@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>模块化</title>
+        
+        <script type="module">
+
+            // 导入模块中的所有属性和方法到mod对象中
+            import * as mod from "./modules/modules1.js"
+
+            // 解构赋值导入模块
+            import {name, help} from "./modules/modules2.js"
+
+            // 简易形式导入模块
+            import md from "./modules/modules3.js"
+
+            //模块调用
+            console.log(mod) 
+            console.log(mod.name)
+            console.log(mod.help())
+
+        </script>
+    </head>
+</html>

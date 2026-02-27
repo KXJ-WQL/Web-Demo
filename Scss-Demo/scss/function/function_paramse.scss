@@ -1,0 +1,36 @@
+@function background-linear-gradient($direction, $start-color, $end-color:blue){
+
+    @return linear-gradient($direction, $start-color, $end-color)
+
+};
+
+@function background-linear-gradients($direction, $coloros...){
+
+    @return linear-gradient($direction, $coloros)
+
+}
+
+//正常传参
+body1{
+    background-image: background-linear-gradient(to right,blue, green);
+
+}
+
+//省略默认值
+body2{
+    background-image: background-linear-gradient(to right, blue);
+
+}
+
+//按照key进行传参
+body3{
+    background-image: background-linear-gradient($start-color: red, $direction: to right);
+}
+
+//可边传参
+body4{
+    background-image: background-linear-gradients(to right, blue,red);
+}
+
+
+

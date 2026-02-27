@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>number类型</title>
+        <script type="text/javascript">
+            
+            var a = "51"
+            var b = "52px"
+            var c = "px50"
+            var d = true
+            var e = false
+            var f = null
+            var g = undefined
+
+            //方式一：使用Number()函数转化
+            //1.纯数字字符串转number
+            console.log("1.纯数字字符串转number：" + Number(a))
+            //2.非纯数字字符串转number
+            console.log("2.非纯数字字符串转number：" + Number(b))
+            //3.true和false转number
+            console.log("3.true转number：" + Number(d))
+            console.log("4.false转number：" + Number(e))
+            //4.null转number
+            console.log("5.null转number：" + Number(f))
+            //5.undefined转number
+            console.log("6.undefined转number：" + Number(g))
+
+            //方式二：使用parserInt()函数转化 - 可以转化有数字且数字开头的非纯数字字符串
+            //6.转化数字开头的非纯数字字符串
+            console.log("7.转化数字开头的非纯数字字符串：" + parseInt(b));
+
+            //7.转化非数字开头的非纯数字字符串
+            console.log("8.转化非数字开头的非纯数字字符串" + parseInt(c));
+        </script>
+    </head>
+
+    <body>
+    </body>
+</html>

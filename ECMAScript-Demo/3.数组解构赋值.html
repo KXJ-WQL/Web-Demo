@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>解构赋值</title>
+        
+        <script type="text/javascript">
+            
+            //1.数组结构
+            //1.1基本语法
+            const a = [1, 2, 3]
+            const [b, c, d] = a;
+            console.log(b); // 输出: 1
+            console.log(c); // 输出: 2
+            console.log(d); // 输出: 2
+
+            //1.2逗号跳过元素
+            const a1 = [1, 2, 3, 4, 5]
+            const [first, second, , fourth] = a1
+            console.log(first);  // 输出: 1
+            console.log(second); // 输出: 2
+            console.log(fourth); // 输出: 4
+
+            //1.3默认值
+            const [x=10, y=20] = [5];
+            console.log(x); // 输出: 5
+            console.log(y); // 输出: 20
+            
+            //1.4嵌套解构
+            const arr = [1, [2, 3], 4];
+            const [a2, [b2, c2], d2] = arr;
+            console.log(a2); // 输出: 1
+            console.log(b2); // 输出: 2
+            console.log(c2); // 输出: 3
+            console.log(d2); // 输出: 4
+           
+            //1.5函数参数解构
+            function TX([a=100, b=200]){
+                console.log(`A: ${a}, B: ${b}`);
+            }
+
+            TX([5, 10]); // 输出: A: 5, B: 10
+            TX([5]) // 输出: A: 5, B: 200
+        </script>
+    </head>
+</html>

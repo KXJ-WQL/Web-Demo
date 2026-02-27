@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Class类</title>
+        
+        <script type="text/javascript">
+           // 1.构造函数使用
+           class User{
+             constructor(name,age){
+                this.name = name
+                this.age = age
+             }
+           }
+           const user = new User("Bob", 25)
+           console.log(user.name) //输出：Bob
+           console.log(user.age) //输出：25
+
+           // 2.实例方法
+           class Animal{
+            constructor(name){
+                this.name = name
+            }
+
+            sprak(){
+                console.log(`${this.name} makes a sound`)
+            }
+           }
+
+           const dog = new Animal("Dog")
+           dog.sprak() //输出：Dog makes a sound
+
+           // 3.静态方法
+           class Calculator{
+            static add(a, b){
+                return a + b;
+            }
+           }
+           console.log(Calculator.add(10,2)) //输出：12
+            
+           // 4.set和get访问器属性
+           class Rectangle{
+             constructor(width, height){
+                this.width = width
+                this.height = height
+             }
+             // Getter
+             get area(){
+                return this.width * this.height
+             }
+
+             // Setter
+             set dimensions(dimensions){
+                this.width = dimensions.width
+                this.height = dimensions.height
+             }
+           }
+
+           const rect = new Rectangle(5,10)
+           console.log(rect.area) //输出：50
+           rect.dimensions = {width: 50, height: 20}
+           console.log(rect.area) //输出：1000
+
+
+           //继承
+           class Animal2{
+            constructor(name){
+                this.name = name
+            }
+
+            speak(){
+                console.log(`${this.name} make a sound`)
+            }
+           }
+
+           class Dog2 extends Animal2{
+             constructor(name, breed){
+                super(name) //调用父类的构造方法
+                this.breed = breed
+             }
+
+             // 重写父类的方法
+             speak(){
+                console.log(`${this.name} barks`)
+             }
+           }
+
+           const dog2 = new Dog2('Rex','German Shepher')
+           dog2.speak() //输出：Rex barks
+
+
+
+        </script>
+    </head>
+</html>

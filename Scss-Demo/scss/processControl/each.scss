@@ -1,0 +1,10 @@
+$colors: blue red green;
+
+//变量colors列表集合
+@each $color in $colors{
+    .text-#{$color}{
+        background-color: $color;
+    }
+}
+
+

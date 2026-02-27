@@ -1,0 +1,21 @@
+html {
+  font-size: 12px;
+  color: antiquewhite;
+}
+
+.container {
+  font-size: 14px;
+}
+.container .header {
+  width: 50%;
+  height: 50%;
+}
+.container .header .left {
+  float: left;
+}
+.container .footer {
+  background-color: blueviolet;
+}
+.container::after {
+  display: inline-block;
+}/*# sourceMappingURL=my.css.map */

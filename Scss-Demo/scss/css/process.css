@@ -1,0 +1,33 @@
+.p3, .p2, .p1, .p0 {
+  width: 0px;
+  height: 0px;
+  display: inline-block;
+}
+
+.p0 {
+  border-width: 30px;
+  border-top-width: 0;
+  border-color: transparent transparent black transparent;
+  border-style: dashed dashed solid dashed;
+}
+
+.p1 {
+  border-width: 20px;
+  border-right-width: 0;
+  border-color: transparent transparent transparent red;
+  border-style: dashed dashed dashed solid;
+}
+
+.p2 {
+  border-width: 40px;
+  border-bottom-width: 0;
+  border-color: green transparent transparent transparent;
+  border-style: solid dashed dashed dashed;
+}
+
+.p3 {
+  border-width: 60px;
+  border-left-width: 0;
+  border-color: transparent blue transparent transparent;
+  border-style: dashed solid dashed dashed;
+}/*# sourceMappingURL=process.css.map */

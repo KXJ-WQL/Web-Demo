@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>对象简写</title>
+        
+        <script type="text/javascript">
+
+            // 属性简写
+            const name = "空想家"
+            const age = 18
+            const a = {name, age} 
+            console.log("属性简写",a)// 打印结果: {name:"空想家", age:18}
+            
+            // 方法简写
+            const b = {name, age,
+                action(){
+                    console.log("action")
+                }
+            }
+            console.log("方法简写",b)
+
+            // 动态计算属性名
+            const s = "hobby"
+            const c = {name, age,
+                action(){
+                    console.log("action")
+                },
+                [s]:"Write code"
+            }
+            console.log("动态计算属性名",c)
+
+        </script>
+    </head>
+</html>

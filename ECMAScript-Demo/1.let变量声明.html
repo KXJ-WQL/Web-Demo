@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>let关键字</title>
+        
+        <script type="text/javascript">
+            
+            // 1.let块级作用域
+            {
+                // let块级作用域声明
+                let a = "let - 块级作用域"
+                // var块级作用域声明
+                var b = "var - 块级作用域"
+            }
+            
+            console.log("1.var块级作用域",b)
+            console.log("2.let块级作用域",a)
+
+            // 2.变量提升
+            console.log("3.var变量提升",c)
+            var c = 3
+
+            console.log("4.let变量提升",d)
+            let d = 4
+
+            //3.重复声明
+            var e = 5
+            var e = 6
+
+            console.log("5.var重复声明函数",e)
+
+            let g = 7
+            let g = 8
+            console.log("6.let重复声明函数",g)
+
+            //4.不绑定到window中
+
+            var h = 10;
+            let i = 20;
+
+            console.log(window.h); // 输出 10，var 声明的变量在全局作用域下会挂载到 window
+            console.log(window.i); // 输出 undefined，let 声明的变量不会挂载到 window
+
+        </script>
+    </head>
+</html>

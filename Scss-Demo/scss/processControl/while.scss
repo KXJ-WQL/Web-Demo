@@ -1,0 +1,34 @@
+$columns: 12;
+
+@while $columns>0 {
+
+    .col-sm-#{$columns} {
+
+        width: $columns / 12 * 100%;
+        //width: $columns / 12 * 100 #{'%'};
+
+    }
+
+    $columns: $columns - 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+@forward './common';
+@use './common' ;
+.test{
+    font-size: common.$font-size;
+    @include common.bgColor();
+}

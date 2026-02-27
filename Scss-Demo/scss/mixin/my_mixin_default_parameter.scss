@@ -1,0 +1,21 @@
+@mixin block-margin($top: 1px, $right: 1px, $bottom: 1px, $left: 1px){
+    margin-top: $top;
+    margin-right: $right;
+    margin-bottom: $bottom;
+    margin-left: $left;
+}
+
+
+
+.container{
+    @include block-margin(10px,10px)
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+//占位符选择器，用于继承
+%comm{
+    width: 0px;
+    height: 0px;
+    display: inline-block;
+}
+
+//公共代码默认传参混入
+@mixin triangle($direction:top, $size:30px, $border-color:black){
+    //继承
+    @extend %comm;
+    border-width: $size;
+    border-#{$direction}-width: 0;
+    //条件判断
+    @if($direction == top){
+        border-color: transparent transparent $border-color transparent;
+        border-style: dashed dashed solid dashed;
+    }
+    @else if($direction == right){
+        border-color: transparent transparent transparent $border-color;
+        border-style: dashed dashed dashed solid;
+    } @else if($direction == bottom){
+        border-color: $border-color transparent transparent transparent;
+        border-style: solid dashed dashed dashed;
+    }@else{
+        border-color: transparent $border-color transparent transparent;
+        border-style: dashed solid dashed dashed;
+    }
+}
+
+.p0{
+    @include triangle()
+}
+
+.p1{
+    @include triangle(right, 20px, red)
+}
+
+
+.p2{
+    @include triangle(bottom, 40px, green)
+}
+
+.p3{
+    @include triangle(left, 60px, blue)
+}
+
+
+
+
+
+
+
+
+
+

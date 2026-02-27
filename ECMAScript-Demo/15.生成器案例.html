@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>生成器案例</title>
+        
+        <script type="text/javascript">
+
+            // 遍历器(Iterator)实现
+            function* range(start, end){
+                for(let i = start; i <= end; i++){
+                    yield i;
+                }
+            }
+            
+            const iterator = range(1, 5)
+            for(const value of iterator){
+                console.log(value) // 输出：1 2 3 4 5
+            }
+
+            //  与for...of循环配合
+            function* generator(){
+                yield 'a';
+                yield 'b';
+                yield 'c';
+            }
+
+            for(let value of generator() ){
+                console.log(value) // 输出：a b c
+            }
+
+            // 传参
+            function* generator(){
+                const a = yield 'a';
+                console.log(a)
+                const b = yield 'b';
+                console.log(b)
+                yield 'c';
+            }
+            const gen = generator()
+            console.log(gen.next())
+            console.log(gen.next("AAA"))
+            console.log(gen.next("BBB"))
+            console.log(gen.next())
+
+        
+        </script>
+    </head>
+</html>

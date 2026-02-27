@@ -1,0 +1,25 @@
+$margin : margin;
+$padding: padding;
+
+$size: 10px;
+
+.container{
+    //插值语句
+    #{$margin}-top: 10px;
+    #{$padding}-top: $size;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

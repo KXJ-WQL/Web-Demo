@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>对象解构赋值</title>
+        
+        <script type="text/javascript">
+            
+            // // 1.对象解构基本使用
+            // const { name, age } = { name:"空想家", age:19 }
+            // console.log(name,age) // 空想家 19
+
+            // // 2.重命名变量
+            // const person = { name: "Bob", age: 30 };
+            // const { name: fullName, age: years } = person;
+            // console.log(fullName, years); // 输出: Bob 30
+
+            // 3.默认值
+            // const user = { name: "Charlie" };
+            // const { name, age = 40 } = user;
+            // console.log(name, age); // 输出: Charlie 40
+            
+
+            function greet({ name, age }) {
+                console.log(`Hello, my name is ${name} and I am ${age} years old.`);
+            }
+
+            greet({ name: "Emma", age: 22 });
+        </script>
+    </head>
+</html>

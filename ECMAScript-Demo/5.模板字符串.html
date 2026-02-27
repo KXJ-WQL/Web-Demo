@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>模板字符串</title>
+        
+        <script type="text/javascript">
+
+            // 1.基础${}插值
+            const name = "Alice"
+            const age = 25
+            const message = `Hello, my name is ${name} and I am ${age} years old`
+            console.log(message)
+
+            // 2.多行字符串
+            const multiLine = `This is a
+            multi-line string.
+            It spans multiple lines.`;
+            console.log(multiLine);
+
+            // 3.函数表达式调用
+            const a = 10;
+            const b = 20;
+            const result = `The sum of ${a} and ${b} is ${a + b}.`; 
+            console.log(result);
+            function greet(name) {
+                return `Hello, ${name}!`;
+            }
+            console.log(`${greet("Bob")}`); // 模板字符串调用函数
+
+            // 4.模板字符串嵌套
+            const j = "John"
+            const k = 30
+            const messages = `name:${name}, Details:${`age:${k}`}`
+            console.log(messages)
+
+            // 5.标签模板
+            function tag(strings, ...values){
+                console.log(strings) // 模板字符串中的静态部分
+                console.log(values) // ${}中的表达式值
+            }
+
+            const b2 = "Alice"
+            const b3 = 25
+            tag`Name--${b2}, Age--${b3}`
+
+        </script>
+    </head>
+</html>
