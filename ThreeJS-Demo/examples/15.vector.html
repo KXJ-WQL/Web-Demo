@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Hello ThreeJS</title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            html,body{
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script type="module">
+            import * as THREE from "three";
+
+           // 创建一个二维向量，表示一个点的坐标
+           const point = new THREE.Vector2(100,20)
+           console.log(point.x, point.y) // 输出：100 20
+
+           // 创建一个三维向量，表示一个物体的位置
+           const position = new THREE.Vector3(1,2,3)
+           console.log(position.x, position.y, position.z) // 输出：1 2 3
+
+            // 创建一个四维向量，表示一个颜色（RGBA）
+            const color = new THREE.Vector4(1,1,1,1)
+            console.log(color.x, color.y, color.z, color.w) // 输出：1 1 1 1
+
+    </script>
+
+    </body>
+    
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

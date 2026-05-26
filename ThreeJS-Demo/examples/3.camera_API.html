@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>camera API</title>
+        <meta charset="UTF-8">
+    </head>
+    
+    <body>
+        <script type="module">
+            import * as THREE from 'three'
+            // 创建场景
+            const scene = new THREE.Scene()
+            // 设置场景颜色
+            scene.background = new THREE.Color(0x663764)
+            // 场景添加雾化效果：从近处开始，到远处完全被雾覆盖
+            scene.fog = new THREE.Fog(0x0a1030, 5, 15)
+
+            // 创建正方体到场景
+            const geometry = new THREE.BoxGeometry(1, 1, 1)
+            const material = new THREE.MeshStandardMaterial({ color : 0x44aa88}) // 创建标准材质并设置颜色
+            const cube = new THREE.Mesh(geometry, material) // 将几何体和材质组合成一个网格对象
+            cube.name = "myCube" // 给物体起一个名称
+            cube.position.set(0, 0, 0) // 设置物体在场景中的位置
+            scene.add(cube) // 添加物体到场景
+
+            // 创建球体到场景
+            const sphereGeo = new THREE.SphereGeometry(0.6, 32, 32)
+            const sphereMat = new THREE.MeshStandardMaterial({ color : 0xaa44cc})
+            const sphere = new THREE.Mesh(sphereGeo, sphereMat)
+            sphere.name = "mySphere"
+            sphere.position.set(1.5, 0.5, -3)
+            scene.add(sphere)
+
+            // 创建相机 - 参数: 视场角(45度), 宽高比(窗口宽/高), 近裁剪面(0.1), 远裁剪面(1000)
+            const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000)
+            camera.position.set(2,8,10)
+            camera.lookAt(0,0,0)
+
+            // 创建渲染器
+            const renderer = new THREE.WebGLRenderer({ antialias : true})
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            document.body.appendChild(renderer.domElement)
+
+            // 添加基础环境光源，以便看清物体
+            const ambientLight = new THREE.AmbientLight(0xC2FFFF)
+            scene.add(ambientLight)
+            // 添加基础平行光源 - 平行光是沿着特定方向发射的光，让物体更立体
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+            dirLight.position.set(1, 2, 1);
+            scene.add(dirLight);
+
+            // 相机旋转角度
+            let angle = 0
+
+            // 动画循环
+            function animate(){
+                requestAnimationFrame(animate)
+                // 去立方体旋转
+                cube.rotation.x += 0.01
+                cube.rotation.y += 0.01
+                //旋转圆的半径
+                const radius = 3
+                angle += 0.01 // 角度每次累加
+                camera.position.x = radius * Math.cos(angle)
+                camera.position.z = radius * Math.sin(angle)
+                camera.lookAt(0,0,0)
+                // 渲染
+                renderer.render(scene, camera)
+            }
+            
+            animate()
+
+            // 处理窗口大小变化
+            window.addEventListener('resize', onWindowResize, false);
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+
+        </script>
+
+
+    </body>
+
+
+</html>

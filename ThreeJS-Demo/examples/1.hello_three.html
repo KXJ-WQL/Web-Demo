@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>hello three</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <script type="module"> 
+            // 1. 引入 Three.js 库
+            import * as THREE from "three"
+
+            // 创建一个场景容器，所有的物体、灯光、相机都需要放入这个场景中
+            const scene = new THREE.Scene();
+
+            // 创建透视相机 (模拟人眼的近大远小效果)
+            // 参数: 视场角(45度), 宽高比(窗口宽/高), 近裁剪面(0.1), 远裁剪面(1000)
+            const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000)
+
+            // 设置相机的位置 (x, y, z)
+            camera.position.z = 3
+            camera.position.x = 2
+            // 让相机看向场景的中心点 (0, 0, 0)
+            camera.lookAt(0,0,0)
+
+            // 创建 WebGL 渲染器，负责将场景绘制到网页上
+            const renderer = new THREE.WebGLRenderer()
+            // 设置渲染器的尺寸，使其填满整个浏览器窗口
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            // 将渲染器生成的 canvas 元素添加到网页的 body 中
+            document.body.appendChild(renderer.domElement)
+
+
+            // --- 创建物体 (网格= 几何体 (形状) + 材质 (外观)) ---
+            // 创建几何体：一个长宽高都为 1 的正方体
+            const boxGeometry = new THREE.BoxGeometry(1, 1, 1)
+            
+            // 创建材质：基本材质 (不受光照影响，显示纯色)
+            const basicMaterial = new THREE.MeshBasicMaterial()
+            
+            // 将几何体和材质组合成一个网格对象
+            const cube = new THREE.Mesh(boxGeometry, basicMaterial)
+
+            // 将正方体添加到场景中
+            scene.add(cube)
+
+            //  动画循环
+            function animate() {
+                // 请求浏览器在下一次重绘之前调用 animate 函数 (通常约为每秒60次)
+                requestAnimationFrame(animate)
+                
+                // 让正方体绕 X 轴和 Y 轴旋转
+                cube.rotation.x += 0.01
+                cube.rotation.y += 0.01
+                
+                // 使用相机渲染场景
+                renderer.render(scene, camera)
+            }
+
+            // 启动动画循环
+            animate()
+
+        </script>
+    </body>
+</html>

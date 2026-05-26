@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>OrbitControls</title>
+        <meta charset="UTF-8">
+        <style>
+            body { margin: 0; overflow: hidden; }
+        </style>
+    </head>
+    
+    <body>
+        <script type="module">
+            import * as THREE from 'three'
+            import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+            // 创建场景
+            const scene = new THREE.Scene()
+          
+            // 创建正方体到场景
+            const geometry = new THREE.BoxGeometry(1, 1, 1)
+            const material = new THREE.MeshStandardMaterial({ color : 0x44aa88}) // 创建标准材质并设置颜色
+            const cube = new THREE.Mesh(geometry, material) // 将几何体和材质组合成一个网格对象
+            cube.name = "myCube" // 给物体起一个名称
+            cube.position.set(0, 0, 0) // 设置物体在场景中的位置
+            scene.add(cube) // 添加物体到场景
+
+            // 添加网格平面 (GridHelper)
+            // 参数1: 网格大小 (10x10)
+            // 参数2: 网格 divisions (分成多少格)
+            // 参数3: 中心线颜色 (白色)
+            // 参数4: 网格线颜色 (灰色)
+            const gridHelper = new THREE.GridHelper(20, 20, 0x888888, 0x444444);
+            scene.add(gridHelper);
+
+            // 创建相机 - 参数: 视场角(45度), 宽高比(窗口宽/高), 近裁剪面(0.1), 远裁剪面(1000)
+            const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000)
+            camera.position.set(2,2,10)
+            camera.lookAt(0,0,0)
+
+            // 创建渲染器
+            const renderer = new THREE.WebGLRenderer({ antialias : true})
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            document.body.appendChild(renderer.domElement)
+
+            // 添加基础环境光源，以便看清物体
+            const ambientLight = new THREE.AmbientLight(0xC2FFFF)
+            scene.add(ambientLight)
+            // 添加基础平行光源 - 平行光是沿着特定方向发射的光，让物体更立体
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+            dirLight.position.set(1, 2, 1);
+            scene.add(dirLight);
+
+
+            // 创建轨道控制器
+            const orbitControl = new OrbitControls(camera, renderer.domElement)
+
+            // 开启自动旋转
+            orbitControl.autoRotate = true;
+            orbitControl.autoRotateSpeed = 15.0;
+
+            // 限制缩放范围
+            orbitControl.minDistance = 2;
+            orbitControl.maxDistance = 20;
+
+            // 限制垂直旋转角度（防止看到地底下或天空顶部）
+            orbitControl.minPolarAngle = 0;           // 0度
+            orbitControl.maxPolarAngle = Math.PI / 2; // 90度
+
+            // 限制水平旋转范围（如限制为180度）
+            orbitControl.minAzimuthAngle = -Math.PI / 2;  // -90度
+            orbitControl.maxAzimuthAngle = Math.PI / 2;   // 90度
+
+            // 禁用平移
+            orbitControl.enablePan = false;
+
+            // 配置鼠标按键（左键旋转，右键平移）
+            orbitControl.mouseButtons = {
+                LEFT: THREE.MOUSE.ROTATE,
+                MIDDLE: THREE.MOUSE.DOLLY,
+                RIGHT: THREE.MOUSE.PAN
+            };
+
+            //轨道控制器添加事件(相机位置/目标点发生变化时触发)
+            orbitControl.addEventListener('change', ()=>{
+                // 重新渲染
+                renderer.render(scene, camera)
+            })
+
+
+             function animate(){
+                requestAnimationFrame(animate)
+                orbitControl.update()
+            }
+
+            animate()
+            
+            // 渲染
+            renderer.render(scene, camera)
+            
+        </script>
+    </body>
+</html>

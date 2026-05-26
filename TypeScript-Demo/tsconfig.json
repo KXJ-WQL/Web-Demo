@@ -1,0 +1,15 @@
+{
+  // TypeScript 编译选项
+  "compilerOptions": {
+    // 输出目标语言版本
+    "target": "es2021",
+    // 生成 CommonJS 模块规范，适用于 Node.js 环境
+    "module": "commonjs",
+    // 模块解析策略，Node 风格
+    "moduleResolution": "node",
+    // 启用严格类型检查
+    "strict": true,
+    // 启用 ES 模块与 CommonJS 互操作
+    "esModuleInterop": true
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>OrbitControls</title>
+        <meta charset="UTF-8">
+        <style>
+            body { margin: 0; overflow: hidden; }
+        </style>
+    </head>
+    
+    <body>
+        <script type="module">
+            import * as THREE from 'three'
+            import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+            // 创建场景
+            const scene = new THREE.Scene()
+          
+            // 自定义几何体
+            // 1.创建基础的空几何体
+            const geometry = new THREE.BufferGeometry()
+            // 2.定义顶点位置
+            const vertices = new Float32Array([
+                0, 1, 0,  // 顶部顶点
+                -1, -1, 0, // 左下顶点
+                1, -1, 0 // 右下顶点
+            ])
+            geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3))
+            //3. 定义顶点颜色(每个顶点一个RGB颜色)
+            const colors = new Float32Array([
+                1, 0, 0,   // 红色
+                0, 1, 0,   // 绿色
+                0, 0, 1    // 蓝色
+            ])
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
+            // 4. 添加索引（定义顶点的连接顺序）
+            const indices = [
+                0, 1, 2   // 一个三角形，使用顶点0、1、2
+            ]
+            geometry.setIndex(indices)
+            // 5.创建材质(启用顶点颜色和双面渲染)
+            const material = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide})
+            // 创建网格
+            const triangle = new THREE.Mesh(geometry, material)
+            scene.add(triangle)
+
+            //彩色立方体
+            // 创建正方体
+            // const geometry = new THREE.BoxGeometry(2, 2, 2);
+            
+            // // 创建材质数组（6个面不同颜色）
+            // const materials = [
+            //     new THREE.MeshStandardMaterial({ color: 0xff3333 }), // 右 (红)
+            //     new THREE.MeshStandardMaterial({ color: 0x33ff33 }), // 左 (绿)
+            //     new THREE.MeshStandardMaterial({ color: 0x3333ff }), // 上 (蓝)
+            //     new THREE.MeshStandardMaterial({ color: 0xffff33 }), // 下 (黄)
+            //     new THREE.MeshStandardMaterial({ color: 0xff33ff }), // 前 (紫)
+            //     new THREE.MeshStandardMaterial({ color: 0x33ffff })  // 后 (青)
+            // ];
+            
+            // // 创建网格
+            // const cube = new THREE.Mesh(geometry, materials);
+            // scene.add(cube);
+            
+            // // 添加光照以便观察材质效果
+            // const light = new THREE.DirectionalLight(0xffffff, 1);
+            // light.position.set(5, 10, 7);
+            // scene.add(light);
+            // scene.add(new THREE.AmbientLight(0x404040));
+            
+
+            // 添加网格平面 (GridHelper)
+            const gridHelper = new THREE.GridHelper(20, 20, 0x888888, 0x444444);
+            scene.add(gridHelper);
+
+            // 创建相机 - 参数: 视场角(45度), 宽高比(窗口宽/高), 近裁剪面(0.1), 远裁剪面(1000)
+            const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000)
+            camera.position.set(2,2,10)
+            camera.lookAt(0,0,0)
+
+            // 创建渲染器
+            const renderer = new THREE.WebGLRenderer({ antialias : true})
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            document.body.appendChild(renderer.domElement)
+
+
+            // 创建轨道控制器
+            const orbitControl = new OrbitControls(camera, renderer.domElement)
+            // 禁用平移
+            orbitControl.enablePan = false;
+            //轨道控制器添加事件(相机位置/目标点发生变化时触发)
+            orbitControl.addEventListener('change', ()=>{
+                // 重新渲染
+                renderer.render(scene, camera)
+            })
+
+            
+            // 渲染
+            renderer.render(scene, camera)
+            
+        </script>
+    </body>
+</html>

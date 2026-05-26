@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>hello three</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <script type="module"> 
+            // 引入 Three.js 库
+            import * as THREE from "three"
+            import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+            import { VertexNormalsHelper } from 'three/examples/jsm/helpers/VertexNormalsHelper.js';
+
+
+            // 创建一个场景容器，所有的物体、灯光、相机都需要放入这个场景中
+            const scene = new THREE.Scene();
+
+            const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000)
+
+            // 设置相机的位置 (x, y, z)
+            camera.position.z = 5
+            camera.position.x = 5
+            // 让相机看向场景的中心点 (0, 0, 0)
+            camera.lookAt(0,0,0)
+
+            // 创建 WebGL 渲染器，负责将场景绘制到网页上
+            const renderer = new THREE.WebGLRenderer()
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            document.body.appendChild(renderer.domElement)
+
+            // 创建轨道控制器
+            const orbitControl = new OrbitControls(camera, renderer.domElement)
+            // 禁用平移
+            orbitControl.enablePan = false;
+            // 轨道控制器添加事件(相机位置/目标点发生变化时触发)
+            orbitControl.addEventListener('change', () =>{
+                // 重新渲染
+                renderer.render(scene, camera)
+            })
+
+            // 创建几何体
+            const boxGeometry = new THREE.BoxGeometry(2, 2, 2)
+            
+            // 创建材质：PBR材质 (无光照为黑色)
+            const basicMaterial = new THREE.MeshStandardMaterial({
+                antialias: true,
+                metalness: 0.5,
+                roughness: 0
+            })
+            
+            // 将几何体和材质组合成一个网格对象
+            const cube = new THREE.Mesh(boxGeometry, basicMaterial)
+
+            // 将正方体添加到场景中
+            scene.add(cube)
+            
+            // 添加平行光源
+            const light = new THREE.DirectionalLight("#00545d")
+            light.position.x = 2
+            light.position.y = 4
+            scene.add(light)
+
+            // 添加点光源
+            const pointLight = new THREE.PointLight("#E41111", 1, 100)
+            pointLight.position.x = -4
+            pointLight.position.y = -4
+            scene.add(pointLight)
+
+            // 添加坐标辅助器
+            const axesHelper = new THREE.AxesHelper(3)
+            scene.add(axesHelper)
+
+            // 添加网格辅助器
+            const gridHelper = new THREE.GridHelper(20, 100, "#ff9300", "#686868")
+            scene.add(gridHelper)
+
+            // 添加包围盒辅助器
+            const boxHelper = new THREE.BoxHelper(cube, "#1498B3")
+            scene.add(boxHelper)
+
+            // 添加法线辅助器
+            const normalHelper = new VertexNormalsHelper(cube, 2, "#B3149E", 2)
+            scene.add(normalHelper)
+
+            // 添加平行光辅助器
+            const directionLightHelper = new THREE.DirectionalLightHelper(light, 1)
+            scene.add(directionLightHelper)
+
+            // 添加点光源辅助器
+            const pointLightHelper = new THREE.PointLightHelper(pointLight, 1)
+            scene.add(pointLightHelper)
+
+           // 渲染
+            renderer.render(scene, camera)
+
+        </script>
+    </body>
+</html>

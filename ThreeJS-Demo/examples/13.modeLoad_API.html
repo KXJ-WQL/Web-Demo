@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>hello three</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <script type="module">
+            // 引入 Three.js 库
+            import * as THREE from "three"
+            import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+            import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+
+            // 创建场景
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x20232a);
+
+            // 创建相机
+            const camera = new THREE.PerspectiveCamera(
+                45,
+                window.innerWidth / window.innerHeight,
+                0.1,
+                1000
+            );
+            camera.position.set(2, 5, 10);
+            // 相机缩放，改变视图放大/缩小效果
+            camera.zoom = 0.4;
+            // 更新相机投影矩阵，必须在修改相机属性后调用才能生效
+            camera.updateProjectionMatrix();
+            
+
+            // 添加平行光
+            const directionLight =  new THREE.DirectionalLight(0xffffff, 1);
+            directionLight.position.set(2, 6, 1);
+            // 支持阴影投射
+            directionLight.castShadow = true;
+            // 设置平行光的阴影属性
+            // 阴影贴图分辨率，分辨率越高阴影越清晰，但性能消耗越大
+            directionLight.shadow.mapSize.width = 2048;
+            directionLight.shadow.mapSize.height = 2048;
+            directionLight.shadow.camera.near = 0.5;
+            directionLight.shadow.camera.far = 10;
+            scene.add(directionLight); 
+            // 添加平行光辅助器
+            const directionalLightHelper = new THREE.DirectionalLightHelper(directionLight, 0.5);
+            scene.add(directionalLightHelper);
+
+            // GLTFLoader 模型加载器
+            const loader = new GLTFLoader();
+            const modelPath = "../glb/building_04_nopack.glb"; // 模型文件路径
+            let loadedModel = null; // 保存模型引用，以备后续调整
+            loader.load(
+                modelPath,
+                (gltf) => {
+                    // 加载成功
+                    loadedModel = gltf.scene;
+                    console.log('Model loaded successfully:', loadedModel);
+                    loadedModel.traverse((child) => {
+                        if (child.isMesh) {
+                            // 覆写金属度和粗糙度
+                            child.material.metalness = 0.8;  // 按需调整
+                            child.material.roughness = 0.2;
+                            child.material.needsUpdate = true;
+                        }
+                    });
+                    
+                    // 可选: 调整模型的缩放和位置，使其适配相机视野并居中
+                    loadedModel.scale.set(0.5, 0.5, 0.5);
+                    loadedModel.position.set(0, -1, 0);
+                    
+                    scene.add(loadedModel);
+                },
+                undefined,
+                (error) => {
+                    console.error('Error loading model:', error);
+                    alert('Failed to load model. Please check the console for details.');
+                }
+            );
+
+            // 创建渲染器进行渲染显示
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            // 开启阴影投射，必须开启才能显示阴影效果
+            renderer.shadowMap.enabled = true;
+            // 设置阴影投射类型：PCFSoftShadowMap提供最平滑的阴影边缘效果
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            document.body.appendChild(renderer.domElement);
+
+            // 添加轨道控制器
+            const controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            });
+
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        </script>
+    </body>
+</html>
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Hello ThreeJS</title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            html,body{
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script type="module">
+            import * as THREE from "three";
+
+            // 创建场景（Scene）：场景就是 3D 世界的容器，所有物体、灯光、相机都放在这里
+            const scene = new THREE.Scene()
+
+            // 创建相机（Camera）：决定你从哪个角度看 3D 世界
+            // 参数：视角75度、宽高比、最近可见距离、最远可见距离
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+            // 设置相机位置（默认在原点，会导致“看不到物体”）
+            camera.position.z = 3;   // 往屏幕外移动（拉远观察距离）
+            camera.position.x = 2;   // 向右偏移一点（产生侧视角）
+            // 让相机始终朝向世界坐标原点（0,0,0）
+            camera.lookAt(0, 0, 0);
+
+            // 创建渲染器（Renderer）：负责把 3D 场景画到网页上（使用 WebGL 技术）
+            const renderer = new THREE.WebGLRenderer();
+            // 设置渲染器大小：让画布充满整个浏览器窗口
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            // 将 canvas 挂载到 DOM，才能在页面显示
+            document.body.appendChild(renderer.domElement)
+
+
+            // 创建几何体：一个长宽高都是 1 的立方体
+            const geometry = new THREE.BoxGeometry(1, 1, 1)
+            // 创建材质：物体的外观（这里是基础材质，不需要光照就能看见）
+            const material = new THREE.MeshBasicMaterial()
+            // 网格（Mesh）= 几何体 + 材质，组合成真正的 3D 物体
+            const cube = new THREE.Mesh(geometry, material)
+
+            // 把立方体物体添加到场景里，让它出现在 3D 世界中
+            scene.add(cube)
+
+
+            
+            // requestAnimationFrame：浏览器原生帧循环（约 60FPS）
+            function animate(){
+               // 递归调用 → 形成持续渲染
+               requestAnimationFrame(animate);
+
+                // 更新物体状态（逻辑层）
+               cube.rotation.x += 0.01;  // 绕 X 轴旋转
+               cube.rotation.y += 0.01;  // 绕 Y 轴旋转
+
+               // 渲染（渲染管线执行）
+               // = 用 camera 拍摄 scene → 输出到 canvas
+               renderer.render(scene, camera);
+            }
+            animate()
+    </script>
+
+    </body>
+    
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
